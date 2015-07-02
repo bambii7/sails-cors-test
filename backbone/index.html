@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Backbone test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  </head>
+
+  <body>
+    <script src="/jquery-2.1.1.js"></script>
+    <script src="/underscore.js"></script>
+    <script src="/backbone.js"></script>
+    <script>
+    $(function(){
+        var Model = Backbone.Model.extend({
+            urlRoot: "http://localhost:1337/mymodel/"
+        });
+
+        var user = new Model();
+        user.set('id');
+        user.fetch({
+            success: function(){
+                console.log('fetch success', arguments);
+            },
+            error: function() {
+                console.log('error fetching', arguments);
+            }
+        });
+    });
+    </script>
+  </body>
+</html>
